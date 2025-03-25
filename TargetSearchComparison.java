@@ -4,47 +4,6 @@ import java.util.Scanner;
 
 public class TargetSearchComparison {
 
-    // Linear Search Implementation
-    public static int linearSearch(int[] arr, int trgt) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == trgt) {
-                // Return index if found
-                return i;
-            }
-        }
-        // Return -1 if not found
-        return -1;
-    }
-
-    // Binary Search Implementation (Array must be sorted first)
-    public static int binarySearch(int[] arr, int trgt) {
-        int left = 0, right = arr.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (arr[mid] == trgt) {
-                return mid;
-            }
-            else if (arr[mid] < trgt) {
-                left = mid + 1;
-            }
-            else {
-                right = mid - 1;
-            }
-        }
-        return -1;
-    }
-
-    // Method to generate a random dataset of given size
-    public static int[] generateDataset(int n) {
-        Random rand = new Random();
-        int[] data = new int[n];
-        for (int i = 0; i < n; i++) {
-            // Assigning random numbers
-            data[i] = rand.nextInt(n * 10);
-        }
-        return data;
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter dataset size: ");
@@ -55,8 +14,7 @@ public class TargetSearchComparison {
 
         // Choose a random target from the dataset
         int trgt = dataset[rand.nextInt(n)];
-        System.out.println("Target to search: "+trgt);
-
+        System.out.println("Target to search: " + trgt);
 
         // Measure Linear Search Time
         long startTime = System.nanoTime();
@@ -81,8 +39,46 @@ public class TargetSearchComparison {
         System.out.println("Binary Search Time: " + binaryTime / 1_000_000.0 + " ms");
         System.out.println("---------------------------------");
     }
-}
 
+    // Linear Search Implementation
+    public static int linearSearch(int[] arr, int trgt) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == trgt) {
+                // Return index if found
+                return i;
+            }
+        }
+        // Return -1 if not found
+        return -1;
+    }
+
+    // Binary Search Implementation (Array must be sorted first)
+    public static int binarySearch(int[] arr, int trgt) {
+        int left = 0, right = arr.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (arr[mid] == trgt) {
+                return mid;
+            } else if (arr[mid] < trgt) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+    // Method to generate a random dataset of given size
+    public static int[] generateDataset(int n) {
+        Random rand = new Random();
+        int[] data = new int[n];
+        for (int i = 0; i < n; i++) {
+            // Assigning random numbers
+            data[i] = rand.nextInt(n * 10);
+        }
+        return data;
+    }
+}
 
 /*
 I/P->
